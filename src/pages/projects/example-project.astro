@@ -1,0 +1,64 @@
+---
+/**
+ * Project Dossier — Page Archetype
+ *
+ * A project page. Technical, structured, informative.
+ * Always includes: serif title + summary, mono metadata block,
+ * architecture section, decisions/notes.
+ * Never includes: marketing language, CTAs, feature comparison grids,
+ * testimonials.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+---
+
+<BaseLayout title="Example Project" description="A placeholder project dossier demonstrating the Project Dossier archetype.">
+  <article class="pt-[var(--space-9)]">
+    <header class="mb-8">
+      <h1 class="text-display font-display text-[var(--color-fg)]">Example Project</h1>
+      <p class="mt-4 text-[var(--text-body-lg)] leading-[var(--leading-body)] text-[var(--color-fg-muted)] max-w-reading">
+        One paragraph summarizing what the project is and why it exists.
+        Replace this with a real project — delete the metadata block below
+        or fill it in with your own stack, status, and links.
+      </p>
+    </header>
+
+    <div class="mb-12 p-6 border border-[var(--color-border)] rounded-[var(--radius-md)] bg-[var(--color-surface)]">
+      <h2 class="font-mono text-[var(--text-meta)] tracking-[var(--tracking-caps)] uppercase text-[var(--color-muted)] mb-4">Metadata</h2>
+      <dl class="grid grid-cols-[auto_1fr] gap-x-8 gap-y-2 font-mono text-[var(--text-meta)] tracking-[var(--tracking-meta)]">
+        <dt class="text-[var(--color-muted)]">Status</dt>
+        <dd class="text-[var(--color-fg)]">Active</dd>
+        <dt class="text-[var(--color-muted)]">Stack</dt>
+        <dd class="text-[var(--color-fg)]">Astro, TypeScript</dd>
+        <dt class="text-[var(--color-muted)]">Started</dt>
+        <dd class="text-[var(--color-fg)]">2026-07-20</dd>
+        <dt class="text-[var(--color-muted)]">License</dt>
+        <dd class="text-[var(--color-fg)]">MIT</dd>
+        <dt class="text-[var(--color-muted)]">Source</dt>
+        <dd><a href="https://github.com/williamzujkowski/remarque-starter" class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors duration-[var(--motion-fast)]">github.com/williamzujkowski/remarque-starter</a></dd>
+      </dl>
+    </div>
+
+    <Prose>
+      <h2>Architecture</h2>
+
+      <p>
+        Describe the project's structure here: the major pieces, how they fit
+        together, and why they are organized that way.
+      </p>
+
+      <h2>Decisions</h2>
+
+      <p>
+        Record the choices worth remembering — the ones a future reader (often
+        you) would otherwise have to reverse-engineer from the code.
+      </p>
+
+      <h2>Changelog</h2>
+
+      <ul>
+        <li><strong>2026-07-20</strong> — Initial placeholder.</li>
+      </ul>
+    </Prose>
+  </article>
+</BaseLayout>

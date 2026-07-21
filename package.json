@@ -1,0 +1,25 @@
+{
+  "name": "remarque-starter",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "audit": "remarque-audit --palette node_modules/remarque-tokens/tokens-palette.css --src src"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "astro": "^6.4.8",
+    "remarque-tokens": "^0.5.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.2.2",
+    "tailwindcss": "4.2.2"
+  }
+}

@@ -1,0 +1,59 @@
+---
+/**
+ * Essay — Page Archetype
+ *
+ * Long-form writing. The core content type.
+ * Always includes: large serif title, mono metadata row, narrow reading
+ * column, strong prose styling, low-noise footer navigation.
+ * Never includes: sidebar content within the reading column, more than
+ * one accent color, inline images wider than the reading column, share
+ * buttons or social widgets in the content area.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Meta from '../../components/Meta.astro';
+import Prose from '../../components/Prose.astro';
+---
+
+<BaseLayout title="Hello, World" description="A placeholder essay demonstrating the Essay archetype.">
+  <article class="pt-[var(--space-9)]">
+    <header class="max-w-reading mx-auto mb-8">
+      <h1 class="text-display font-display text-[var(--color-fg)]">Hello, World</h1>
+      <div class="mt-4">
+        <Meta date="2026-07-20" readingTime="1 min read" tags={["meta"]} />
+      </div>
+    </header>
+
+    <Prose>
+      <p class="text-[var(--text-body-lg)] leading-[var(--leading-body)] text-[var(--color-fg-muted)]">
+        This is a placeholder post. Delete this paragraph and replace the rest of
+        this file with your first real piece of writing.
+      </p>
+
+      <h2>What this page demonstrates</h2>
+
+      <p>
+        This is the Essay archetype: a large serif title, a mono metadata row
+        (date, reading time, tags), a narrow reading column, and prose styling
+        that comes from <code>.remarque-prose</code> — the class the
+        <code>Prose</code> component wraps around this content. You did not
+        write any of that styling; it ships with the <code>remarque-tokens</code>
+        package.
+      </p>
+
+      <p>
+        Headings, links, lists, inline code, and blockquotes below all inherit
+        their look from the same source.
+      </p>
+
+      <blockquote>
+        <p>Typography is the visual medium of language.</p>
+      </blockquote>
+
+      <ul>
+        <li>Edit this file directly, or delete it and add your own posts under <code>src/pages/writing/</code>.</li>
+        <li>Keep the reading column narrow — do not widen it beyond <code>--content-reading</code>.</li>
+        <li>Update <code>src/pages/rss.xml.ts</code> when you add or remove posts.</li>
+      </ul>
+    </Prose>
+  </article>
+</BaseLayout>

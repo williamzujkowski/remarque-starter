@@ -1,0 +1,54 @@
+---
+/**
+ * Landing — Page Archetype
+ *
+ * The homepage. Sets the tone.
+ * Always includes: clear identity statement (serif, large), navigation to content types, generous whitespace.
+ * Never includes: hero images, multiple CTAs, feature grids, testimonials, newsletter signups above fold.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Home">
+  <div class="pt-remarque-10 pb-remarque-9">
+    <h1 class="text-display font-display text-[var(--color-fg)] max-w-[20ch]">
+      A name, and a line about what you make.
+    </h1>
+    <p class="mt-6 text-[var(--text-body-lg)] leading-[var(--leading-body)] text-[var(--color-fg-muted)] max-w-reading">
+      This is a starting point, not a finished site. Replace this paragraph with a
+      short, honest statement of who you are and what this site is for — one or
+      two sentences, no more. Remarque rewards restraint here.
+    </p>
+  </div>
+
+  <!-- Content Sections -->
+  <div class="border-t border-[var(--color-border)] pt-8 pb-8">
+    <p class="font-mono text-[var(--text-meta)] tracking-[var(--tracking-caps)] uppercase text-[var(--color-muted)] mb-6">Content</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <a href={`${base}writing`} class="group block no-underline">
+        <h2 class="text-section font-display text-[var(--color-fg)] group-hover:text-[var(--color-accent)] transition-colors duration-[var(--motion-fast)]">Writing</h2>
+        <p class="mt-2 text-[var(--text-body)] text-[var(--color-fg-muted)]">Long-form essays.</p>
+      </a>
+      <a href={`${base}projects`} class="group block no-underline">
+        <h2 class="text-section font-display text-[var(--color-fg)] group-hover:text-[var(--color-accent)] transition-colors duration-[var(--motion-fast)]">Projects</h2>
+        <p class="mt-2 text-[var(--text-body)] text-[var(--color-fg-muted)]">Technical work and open source.</p>
+      </a>
+      <a href={`${base}notes`} class="group block no-underline">
+        <h2 class="text-section font-display text-[var(--color-fg)] group-hover:text-[var(--color-accent)] transition-colors duration-[var(--motion-fast)]">Notes</h2>
+        <p class="mt-2 text-[var(--text-body)] text-[var(--color-fg-muted)]">Short observations and references.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Recent -->
+  <div class="border-t border-[var(--color-border)] pt-8">
+    <p class="font-mono text-[var(--text-meta)] tracking-[var(--tracking-caps)] uppercase text-[var(--color-muted)] mb-6">Recent</p>
+    <ul class="space-y-4 list-none p-0">
+      <li>
+        <a href={`${base}writing/hello-world`} class="text-[var(--color-fg)] hover:text-[var(--color-accent)] transition-colors duration-[var(--motion-fast)] no-underline">Hello, World</a>
+        <span class="font-mono text-[var(--text-meta)] tracking-[var(--tracking-meta)] text-[var(--color-muted)] ml-3">placeholder</span>
+      </li>
+    </ul>
+  </div>
+</BaseLayout>

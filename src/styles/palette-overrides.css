@@ -1,0 +1,90 @@
+/*
+ * Palette Overrides — sanctioned personalization
+ * ────────────────────────────────────────────────
+ * This file is imported LAST in globals.css, so uncommenting the block
+ * below wins the cascade over remarque-tokens' defaults. It only ever
+ * touches PALETTE-tier tokens (font slots, colors, --content-reading) —
+ * never tokens-core.css. See:
+ *   node_modules/remarque-tokens/REMARQUE.md    ("Token Tiers", "Font Slots")
+ *   node_modules/remarque-tokens/AGENT_RULES.md ("Token Tiers")
+ *
+ * The block below is a full copy of the default palette tier, same
+ * shape as node_modules/remarque-tokens/tokens-palette.css. Uncomment
+ * it (delete the "/*" line that opens it and the "* /" line that closes
+ * it — nothing in between) and edit values in place. Once uncommented,
+ * THIS file is itself a valid --palette audit target:
+ *
+ *   npx remarque-audit --palette src/styles/palette-overrides.css --src src
+ *
+ * Two sanctioned recipes:
+ *
+ *   1. Accent hue — keep the LIGHTNESS steps (lightness carries
+ *      contrast; hue carries personality), change only hue/chroma on
+ *      the --color-accent* / --color-selection-bg lines below, then
+ *      reduce chroma until the audit reports in-gamut, >=4.5:1 accent
+ *      contrast in both themes (REMARQUE.md "Changing the Accent Hue").
+ *
+ *   2. Font-slot swap — choose only from the approved pairings in
+ *      REMARQUE.md ("Font Slots"). If you change --font-body, you MUST
+ *      also update --content-reading to match (REMARQUE.md "Measure
+ *      Compensation" table — target 66-72 characters per line at
+ *      --text-body). Add matching @font-face rules + preload links in
+ *      globals.css / BaseLayout.astro if you self-host a different face.
+ *
+ * After editing, run the audit and fix every failure before shipping —
+ * do not suppress it. Dark mode is NOT an inverted light mode — the
+ * dark block below is tuned independently, not derived from the light
+ * one. [data-theme="dark"] is canonical; :root.dark is a compatibility
+ * bridge for class-keyed sites.
+ */
+
+/*
+:root {
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  --content-reading: 46rem;
+
+  --color-bg:          oklch(0.975 0.005 80);
+  --color-bg-subtle:   oklch(0.955 0.005 80);
+  --color-fg:          oklch(0.18 0.01 80);
+  --color-fg-muted:    oklch(0.43 0.015 80);
+  --color-muted:       oklch(0.54 0.01 80);
+  --color-border:      oklch(0.88 0.005 80);
+  --color-border-bold: oklch(0.62 0.01 80);
+  --color-surface:     oklch(0.965 0.005 80);
+
+  --color-accent:        oklch(0.50 0.14 250);
+  --color-accent-hover:  oklch(0.42 0.11 250);
+  --color-accent-subtle: oklch(0.95 0.02 250);
+
+  --color-link: var(--color-accent);
+  --color-link-hover: var(--color-accent-hover);
+  --color-focus-ring: var(--color-accent);
+  --color-selection-bg: oklch(0.92 0.04 250);
+  --color-selection-fg: var(--color-fg);
+  --color-code-bg: oklch(0.945 0.005 80);
+  --color-code-fg: var(--color-fg);
+}
+
+[data-theme="dark"],
+:root.dark {
+  --color-bg:          oklch(0.16 0.01 80);
+  --color-bg-subtle:   oklch(0.19 0.01 80);
+  --color-fg:          oklch(0.90 0.005 80);
+  --color-fg-muted:    oklch(0.70 0.01 80);
+  --color-muted:       oklch(0.60 0.01 80);
+  --color-border:      oklch(0.25 0.005 80);
+  --color-border-bold: oklch(0.50 0.01 80);
+  --color-surface:     oklch(0.19 0.01 80);
+
+  --color-accent:        oklch(0.68 0.12 250);
+  --color-accent-hover:  oklch(0.75 0.12 250);
+  --color-accent-subtle: oklch(0.22 0.04 250);
+
+  --color-selection-bg: oklch(0.30 0.06 250);
+  --color-selection-fg: oklch(0.92 0.005 80);
+  --color-code-bg:     oklch(0.20 0.005 80);
+  --color-code-fg:     oklch(0.88 0.005 80);
+}
+*/

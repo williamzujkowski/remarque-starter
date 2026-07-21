@@ -1,0 +1,120 @@
+/*
+ * Remarque Starter — Global Styles
+ * ─────────────────────────────────
+ * Consumes the remarque-tokens PACKAGE from npm (not file copies).
+ * String-form @imports only (remarque-tokens AGENT_RULES.md Pitfall #6);
+ * tokens imported UNLAYERED (Pitfall #7) — do not wrap in layer(...).
+ */
+
+@import "tailwindcss";
+@import "remarque-tokens";
+@import "remarque-tokens/theme.css";
+
+/* ─── Self-hosted Fonts ────────────────────────────────── */
+/* Site-specific @font-face (not the package's fonts.css) because this
+   site has no base path; files live in public/fonts. If you deploy under
+   a subpath, prefix these URLs with your base (see astro.config.mjs). */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/inter-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/inter-italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/newsreader-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url("/fonts/newsreader-italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+/* ─── Explicit Light Override ──────────────────────────── */
+/* Palette-tier override (sanctioned): without it, users whose OS is
+   dark could never toggle back to light (AGENT_RULES Pitfall #3).
+   Values mirror the package's light :root defaults. */
+
+[data-theme="light"] {
+  --color-bg: oklch(0.975 0.005 80);
+  --color-bg-subtle: oklch(0.955 0.005 80);
+  --color-fg: oklch(0.18 0.01 80);
+  --color-fg-muted: oklch(0.43 0.015 80);
+  --color-muted: oklch(0.54 0.01 80);
+  --color-border: oklch(0.88 0.005 80);
+  --color-border-bold: oklch(0.62 0.01 80);
+  --color-surface: oklch(0.965 0.005 80);
+  --color-accent: oklch(0.50 0.14 250);
+  --color-accent-hover: oklch(0.42 0.11 250);
+  --color-accent-subtle: oklch(0.95 0.02 250);
+  --color-selection-bg: oklch(0.92 0.04 250);
+  --color-selection-fg: var(--color-fg);
+  --color-code-bg: oklch(0.945 0.005 80);
+  --color-code-fg: var(--color-fg);
+}
+
+/* ─── Nav Link ─────────────────────────────────────────── */
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  transition: color var(--motion-fast) var(--motion-easing);
+  padding: 0.25rem 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-link:hover {
+  color: var(--color-fg);
+}
+
+/* ─── Footer Link ──────────────────────────────────────── */
+/* Mono footer links with the same 44px touch-target floor as .nav-link */
+
+.footer-link {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--motion-fast) var(--motion-easing);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-link:hover {
+  color: var(--color-fg);
+}
+
+/* ─── Palette Overrides ────────────────────────────────── */
+/* Sanctioned personalization surface — imported LAST so it wins the
+   cascade. See src/styles/palette-overrides.css (commented template). */
+
+@import "./palette-overrides.css";

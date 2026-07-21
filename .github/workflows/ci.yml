@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+
+      - name: Setup Node
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f  # v6
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Remarque token audit (contrast, gamut, font floors, hardcoded colors)
+        run: npx remarque-audit --palette node_modules/remarque-tokens/tokens-palette.css --src src
+
+      - name: Build Astro site
+        run: npm run build
+
+  # ─────────────────────────────────────────────────────────────────
+  # GitHub Pages deploy — disabled by default. To enable:
+  #   1. In astro.config.mjs, set `site` to your real domain (or
+  #      https://<user>.github.io) and `base` to '/' for a user/org
+  #      site, or '/<repo>/' for a project site.
+  #   2. In this repo's Settings → Pages, set Source to "GitHub Actions".
+  #   3. Uncomment the `deploy` job below and, if you want it to run on
+  #      every push to main rather than only via the `build` job above,
+  #      also give `deploy` its own `permissions` and `environment` (kept
+  #      here) plus a `needs: build` dependency (already present).
+  # ─────────────────────────────────────────────────────────────────
+  #
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #     pages: write
+  #     id-token: write
+  #   concurrency:
+  #     group: pages
+  #     cancel-in-progress: false
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
+  #
+  #     - name: Setup Node
+  #       uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f  # v6
+  #       with:
+  #         node-version: 22
+  #
+  #     - name: Install dependencies
+  #       run: npm ci
+  #
+  #     - name: Build Astro site
+  #       run: npm run build
+  #
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9  # v5.0.0
+  #       with:
+  #         path: ./dist
+  #
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128  # v5.0.0
