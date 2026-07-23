@@ -16,7 +16,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
     "astro": "^6.4.8",
-    "remarque-tokens": "^0.5.1"
+    "remarque-tokens": "^0.10.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.2.2",
