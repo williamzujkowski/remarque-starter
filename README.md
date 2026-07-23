@@ -72,7 +72,7 @@ npx remarque-audit --palette src/styles/palette-overrides.css --src src
 `remarque-tokens` also ships a color provider bridge: `remarque-theme`
 derives a complete palette-tier override from any theme in
 [`@williamzujkowski/oklch-terminal-themes`](https://www.npmjs.com/package/@williamzujkowski/oklch-terminal-themes)
-(485 terminal color schemes converted to OKLCH). It's the fastest way
+(500+ curated terminal color schemes converted to OKLCH). It's the fastest way
 to reskin this site — no manual hue math, and the output passes
 `remarque-audit` by construction.
 
