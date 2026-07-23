@@ -67,6 +67,53 @@ colors:
 npx remarque-audit --palette src/styles/palette-overrides.css --src src
 ```
 
+### Palette from a terminal theme
+
+`remarque-tokens` also ships a color provider bridge: `remarque-theme`
+derives a complete palette-tier override from any theme in
+[`@williamzujkowski/oklch-terminal-themes`](https://www.npmjs.com/package/@williamzujkowski/oklch-terminal-themes)
+(485 terminal color schemes converted to OKLCH). It's the fastest way
+to reskin this site — no manual hue math, and the output passes
+`remarque-audit` by construction.
+
+1. Install the theme dataset (it's opt-in, not a dependency of this
+   template):
+
+   ```
+   npm install @williamzujkowski/oklch-terminal-themes
+   ```
+
+2. Generate a palette override from a light-theme slug:
+
+   ```
+   npx remarque-theme gruvbox-light -o src/styles/palette-override.css
+   ```
+
+   `--dark <slug>` defaults to the dataset's `counterpart` pairing when
+   the light theme has one (as `gruvbox-light` does here), so most
+   themes need no `--dark` flag at all. Browse slugs at the
+   [live picker](https://williamzujkowski.github.io/oklch-terminal-themes/)
+   or in the package's `index.json`.
+
+3. Import the generated file as the **last** line of
+   `src/styles/globals.css` — after the existing
+   `@import "./palette-overrides.css";` — so it wins the cascade over
+   both the tokens defaults and the "Explicit Light Override" block:
+
+   ```css
+   @import "./palette-override.css";
+   ```
+
+   Then run the audit against your actual colors:
+
+   ```
+   npx remarque-audit --palette src/styles/palette-override.css --src src
+   ```
+
+`palette-override.css` is generated output — regenerate it by
+re-running `remarque-theme` with new slugs, never hand-edit it (see
+`node_modules/remarque-tokens/AGENT_RULES.md`).
+
 ## Agent-readiness
 
 `CLAUDE.md` and `AGENTS.md` point any AI agent working on this repo at

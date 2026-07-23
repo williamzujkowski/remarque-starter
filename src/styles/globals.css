@@ -115,6 +115,9 @@
 
 /* ─── Palette Overrides ────────────────────────────────── */
 /* Sanctioned personalization surface — imported LAST so it wins the
-   cascade. See src/styles/palette-overrides.css (commented template). */
+   cascade. See src/styles/palette-overrides.css (commented template).
+   Prefer a whole terminal theme instead? See README.md "Palette from
+   a terminal theme" (npx remarque-theme <slug>) — generated, never
+   hand-edited. */
 
 @import "./palette-overrides.css";
