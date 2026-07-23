@@ -116,9 +116,9 @@ re-running `remarque-theme` with new slugs, never hand-edit it (see
 
 ## Optional modules
 
-`remarque-tokens` ships two opt-in CSS modules beyond the core, palette,
+`remarque-tokens` ships three opt-in CSS modules beyond the core, palette,
 and prose tiers this template already imports via `@import
-"remarque-tokens"` — neither is aggregated into that import or wired
+"remarque-tokens"` — none is aggregated into that import or wired
 into this starter, since a template shouldn't presume which archetypes
 you'll build:
 
@@ -126,8 +126,10 @@ you'll build:
   rail for long-form Essay pages.
 - `remarque-tokens/broadsheet` — masthead, lead article, and numbered
   entry list for a newspaper-style Landing/archive page.
+- `remarque-tokens/forms` — field/input/checkbox/radio/button/table
+  primitives for the rare contact- or search-form moment.
 
-Both are demonstrated on the
+All three are demonstrated on the
 [demo site](https://williamzujkowski.github.io/remarque/) rather than
 here — import the subpath in `globals.css` if your project needs one.
 
