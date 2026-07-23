@@ -114,6 +114,25 @@ to reskin this site — no manual hue math, and the output passes
 re-running `remarque-theme` with new slugs, never hand-edit it (see
 `node_modules/remarque-tokens/AGENT_RULES.md`).
 
+## Optional modules
+
+`remarque-tokens` ships three opt-in CSS modules beyond the core, palette,
+and prose tiers this template already imports via `@import
+"remarque-tokens"` — none is aggregated into that import or wired
+into this starter, since a template shouldn't presume which archetypes
+you'll build:
+
+- `remarque-tokens/essay` — sidenotes and a sticky table-of-contents
+  rail for long-form Essay pages.
+- `remarque-tokens/broadsheet` — masthead, lead article, and numbered
+  entry list for a newspaper-style Landing/archive page.
+- `remarque-tokens/forms` — field/input/checkbox/radio/button/table
+  primitives for the rare contact- or search-form moment.
+
+All three are demonstrated on the
+[demo site](https://williamzujkowski.github.io/remarque/) rather than
+here — import the subpath in `globals.css` if your project needs one.
+
 ## Agent-readiness
 
 `CLAUDE.md` and `AGENTS.md` point any AI agent working on this repo at
