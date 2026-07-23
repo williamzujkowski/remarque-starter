@@ -14,8 +14,8 @@
     "audit": "remarque-audit --palette node_modules/remarque-tokens/tokens-palette.css --src src"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.18",
-    "astro": "^6.4.8",
+    "@astrojs/rss": "^4.0.19",
+    "astro": "^7.1.3",
     "remarque-tokens": "^0.10.0"
   },
   "devDependencies": {
