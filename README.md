@@ -116,7 +116,7 @@ re-running `remarque-theme` with new slugs, never hand-edit it (see
 
 ## Optional modules
 
-`remarque-tokens` ships three opt-in CSS modules beyond the core, palette,
+`remarque-tokens` ships four opt-in CSS modules beyond the core, palette,
 and prose tiers this template already imports via `@import
 "remarque-tokens"` — none is aggregated into that import or wired
 into this starter, since a template shouldn't presume which archetypes
@@ -128,10 +128,19 @@ you'll build:
   entry list for a newspaper-style Landing/archive page.
 - `remarque-tokens/forms` — field/input/checkbox/radio/button/table
   primitives for the rare contact- or search-form moment.
+- `remarque-tokens/deck` — `createDeck()`, a dependency-free runtime
+  for switching/persisting/FOUC-safely restoring a choice among
+  several `remarque-theme`-generated palettes via `data-palette`.
 
-All three are demonstrated on the
+All four are demonstrated on the
 [demo site](https://williamzujkowski.github.io/remarque/) rather than
 here — import the subpath in `globals.css` if your project needs one.
+
+Each module's markup contract is also available machine-readably from
+the package's [registry](https://williamzujkowski.github.io/remarque/registry.json)
+(`node_modules/remarque-tokens/registry.json` +
+`registry/<name>.json`) — fetch an item instead of transcribing markup
+from spec prose.
 
 ## Agent-readiness
 
