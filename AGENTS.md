@@ -1,13 +1,23 @@
 # Agent Instructions
 
-This site uses the Remarque design system via the `remarque-tokens` npm package. Before any UI work, read `node_modules/remarque-tokens/AGENT_RULES.md` (implementation contract) and `node_modules/remarque-tokens/REMARQUE.md` (specification).
+This is a **remarque-tokens consumer site**: an Astro project that consumes the Remarque design system from npm rather than vendoring its CSS. Do not fork tokens — personalize the palette tier only.
 
-Personalize ONLY palette-tier tokens (see "Token Tiers" in REMARQUE.md) — never `tokens-core.css`. Use `src/styles/palette-overrides.css` as the starting point.
+## Where the contract lives
 
-After any palette change, run:
+- `.claude/skills/remarque/SKILL.md` — load before building or reviewing any page. States the tier rules, the audit command, and the two build-time pitfalls that pass a green build while silently breaking.
+- `.claude/skills/remarque-adopt/SKILL.md` — load when bumping the `remarque-tokens` pin, or when the audit starts failing after one. The consumer-conformance playbook.
+- `.claude/skills/remarque-new-page/SKILL.md` — load when building a new page from an archetype; fetches registry items with integrity verification instead of transcribing spec prose.
+- `node_modules/remarque-tokens/AGENT_RULES.md` — implementation contract (build order, non-negotiables, disallowed patterns).
+- `node_modules/remarque-tokens/REMARQUE.md` — full specification (philosophy, token tiers, page archetypes).
+- `node_modules/remarque-tokens/tokens.json` + `tokens.schema.json` — machine-readable token values and their schema. Read these instead of guessing a value from memory.
+- `node_modules/remarque-tokens/registry/` (index: `registry.json`) — versioned, hash-verified markup contracts for the Essay/Broadsheet/Forms/Palette-Deck modules. Fetch an item instead of transcribing markup from spec prose.
+- https://williamzujkowski.github.io/remarque/llms.txt — canonical machine-readable pointer to the same contract, for an agent without this repo's `node_modules` on disk.
 
-```
-npx remarque-audit --palette src/styles/<your-palette>.css --src src
-```
+## Gates
 
-Fix every failure before shipping. Do not suppress or skip the audit.
+- `npm run audit` — contrast, gamut, font-size floors, no hardcoded colors. Pass `-- --json` for a machine-parseable result. Every failure blocks shipping.
+- Token drift between the installed package and this project's own overrides isn't wired into this repo's CI, but is available as a reusable `workflow_call`: `williamzujkowski/remarque`'s `.github/workflows/token-drift.yml`.
+
+## Rule hierarchy
+
+`AGENT_RULES.md` governs implementation. A deviation from it is only valid if documented (`DESIGN-DEVIATIONS.md` / `DESIGN-NOTES.md`) — undocumented, it's a bug.

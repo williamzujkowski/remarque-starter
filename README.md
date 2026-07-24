@@ -144,10 +144,36 @@ from spec prose.
 
 ## Agent-readiness
 
-`CLAUDE.md` and `AGENTS.md` point any AI agent working on this repo at
-`node_modules/remarque-tokens/AGENT_RULES.md` (the implementation
-contract) and `node_modules/remarque-tokens/REMARQUE.md` (the
-specification) before it touches any UI.
+`AGENTS.md` (with `CLAUDE.md` pointing at it) orients any AI agent
+working on this repo: what this project is, where the implementation
+contract, specification, and registry live, and the audit/drift gates
+— before it touches any UI.
+
+Two Claude Code skills ship in the `remarque-tokens` npm tarball under
+`skills/`, but `npm install` doesn't put anything into this project's
+`.claude/skills/` automatically — Claude Code only reads skills from
+there (or from `~/.claude/skills/`), never `node_modules`. This
+template already vendors both:
+
+- `.claude/skills/remarque/SKILL.md` — the build/review contract for
+  ordinary page work.
+- `.claude/skills/remarque-adopt/SKILL.md` — the consumer-conformance
+  playbook for bumping the `remarque-tokens` pin.
+
+- `.claude/skills/remarque-new-page/SKILL.md` — archetype page building:
+  fetch registry items (integrity-verified), never transcribe.
+### Updating vendored skills
+
+The copies are versioned with whatever `remarque-tokens` version was
+installed at copy time, not auto-updating — re-run both `cp` commands
+after any MAJOR bump (and any time `AGENT_RULES.md`'s
+"Machine-Readable Output" shape changes) to pick up the current
+playbook:
+
+```bash
+cp -r node_modules/remarque-tokens/skills/remarque .claude/skills/remarque
+cp -r node_modules/remarque-tokens/skills/* .claude/skills/
+```
 
 ## Deploying
 
