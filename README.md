@@ -160,6 +160,8 @@ template already vendors both:
 - `.claude/skills/remarque-adopt/SKILL.md` — the consumer-conformance
   playbook for bumping the `remarque-tokens` pin.
 
+- `.claude/skills/remarque-new-page/SKILL.md` — archetype page building:
+  fetch registry items (integrity-verified), never transcribe.
 ### Updating vendored skills
 
 The copies are versioned with whatever `remarque-tokens` version was
@@ -170,7 +172,7 @@ playbook:
 
 ```bash
 cp -r node_modules/remarque-tokens/skills/remarque .claude/skills/remarque
-cp -r node_modules/remarque-tokens/skills/remarque-adopt .claude/skills/remarque-adopt
+cp -r node_modules/remarque-tokens/skills/* .claude/skills/
 ```
 
 ## Deploying

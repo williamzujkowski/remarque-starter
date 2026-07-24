@@ -6,6 +6,7 @@ This is a **remarque-tokens consumer site**: an Astro project that consumes the 
 
 - `.claude/skills/remarque/SKILL.md` — load before building or reviewing any page. States the tier rules, the audit command, and the two build-time pitfalls that pass a green build while silently breaking.
 - `.claude/skills/remarque-adopt/SKILL.md` — load when bumping the `remarque-tokens` pin, or when the audit starts failing after one. The consumer-conformance playbook.
+- `.claude/skills/remarque-new-page/SKILL.md` — load when building a new page from an archetype; fetches registry items with integrity verification instead of transcribing spec prose.
 - `node_modules/remarque-tokens/AGENT_RULES.md` — implementation contract (build order, non-negotiables, disallowed patterns).
 - `node_modules/remarque-tokens/REMARQUE.md` — full specification (philosophy, token tiers, page archetypes).
 - `node_modules/remarque-tokens/tokens.json` + `tokens.schema.json` — machine-readable token values and their schema. Read these instead of guessing a value from memory.
