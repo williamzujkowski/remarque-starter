@@ -1,13 +1,7 @@
-# Agent Instructions
+# remarque-starter — Agent Instructions
 
-This site uses the Remarque design system via the `remarque-tokens` npm package. Before any UI work, read `node_modules/remarque-tokens/AGENT_RULES.md` (implementation contract) and `node_modules/remarque-tokens/REMARQUE.md` (specification).
+**Canonical file: [`AGENTS.md`](AGENTS.md).**
 
-Personalize ONLY palette-tier tokens (see "Token Tiers" in REMARQUE.md) — never `tokens-core.css`. Use `src/styles/palette-overrides.css` as the starting point.
+This file is intentionally a pointer, not a copy — a byte-identical duplicate has no sync mechanism and guarantees eventual drift (the same problem `remarque-tokens` itself hit and fixed, see its own `AGENTS.md`).
 
-After any palette change, run:
-
-```
-npx remarque-audit --palette src/styles/<your-palette>.css --src src
-```
-
-Fix every failure before shipping. Do not suppress or skip the audit.
+Claude Code sessions in this repo: read `AGENTS.md` before touching any UI.
