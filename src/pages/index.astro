@@ -7,7 +7,7 @@
  * Never includes: hero images, multiple CTAs, feature grids, testimonials, newsletter signups above fold.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + "/";
 ---
 
 <BaseLayout title="Home">
