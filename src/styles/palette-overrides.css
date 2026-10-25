@@ -35,6 +35,14 @@
  *      --text-body). Add matching @font-face rules + preload links in
  *      globals.css / BaseLayout.astro if you self-host a different face.
  *
+ * Palette Deck: deck.css already draws the picker's "Remarque" swatch
+ * from the DEFAULT palette. If you change the colors here, also override
+ * it so the picker previews your palette (outside the comment below):
+ *   [data-palette-swatch="default"] {
+ *     --swatch-bg: <your --color-bg>; --swatch-fg: <your --color-fg>;
+ *     --swatch-accent: <your --color-accent>;   (light-dark() pairs)
+ *   }
+ *
  * After editing, run the audit and fix every failure before shipping —
  * do not suppress it. Dark mode is NOT an inverted light mode — the
  * second argument of each light-dark() is tuned independently, not

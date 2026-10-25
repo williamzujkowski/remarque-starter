@@ -9,6 +9,12 @@
 @import "tailwindcss";
 @import "remarque-tokens";
 @import "remarque-tokens/theme.css";
+/* Chrome module: skip link and the palette picker's styles. */
+@import "remarque-tokens/chrome.css";
+/* Palette Deck: 15 reader-selectable themes, inert until a
+   [data-palette] is set (specificity beats the site palette whatever the
+   order). Optional: see PalettePicker.astro for how to remove it. */
+@import "remarque-tokens/deck.css";
 
 /* ─── Self-hosted Fonts ────────────────────────────────── */
 /* Site-specific @font-face (not the package's fonts.css) because this

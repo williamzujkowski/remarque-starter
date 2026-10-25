@@ -64,6 +64,17 @@ file itself once you uncomment it, so CI always audits the colors the site
 really ships. (A palette from `remarque-theme`, below, is a separate file:
 audit it with `npx remarque-audit --palette <file> --src src`.)
 
+### Palette Deck (reader-selectable themes)
+
+The footer carries a theme picker: readers can switch the site to one of 15
+curated terminal themes (Gruvbox, Nord, Rosé Pine, ...), light and dark,
+while your own palette stays the default. It ships prebuilt in
+`remarque-tokens/deck.css`, imported in `src/styles/globals.css`, with the
+picker in `src/components/PalettePicker.astro` and a small restore script in
+`BaseLayout.astro`'s `<head>`. To remove it, follow the checklist at the top
+of `PalettePicker.astro`. If you customize your colors, also override the
+picker's default swatch (see `palette-overrides.css`).
+
 ### Palette from a terminal theme
 
 `remarque-tokens` also ships a color provider bridge: `remarque-theme`
