@@ -88,6 +88,7 @@ const ogImageURL = ogImage || `${Astro.site?.origin || ''}${base}og-image.svg`;
             <a href={`${base}writing`} class="nav-link">Writing</a>
             <a href={`${base}projects`} class="nav-link">Projects</a>
             <a href={`${base}notes`} class="nav-link">Notes</a>
+            <PalettePicker />
             <button
               id="theme-toggle"
               type="button"
@@ -127,7 +128,6 @@ const ogImageURL = ogImage || `${Astro.site?.origin || ''}${base}og-image.svg`;
             <a href={`${base}rss.xml`} class="footer-link">RSS</a>
           </div>
         </div>
-        <div class="mt-4"><PalettePicker /></div>
       </footer>
     </div>
 
