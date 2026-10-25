@@ -58,14 +58,11 @@ before shipping:
 npm run audit
 ```
 
-This wraps `npx remarque-audit --palette node_modules/remarque-tokens/tokens-palette.css --src src`.
-Once you've customized `src/styles/palette-overrides.css`, point
-`--palette` at that file instead so the audit checks your actual
-colors:
-
-```
-npx remarque-audit --palette src/styles/palette-overrides.css --src src
-```
+`scripts/audit.sh` picks the palette to check: the package defaults while
+`src/styles/palette-overrides.css` is still fully commented out, and that
+file itself once you uncomment it, so CI always audits the colors the site
+really ships. (A palette from `remarque-theme`, below, is a separate file:
+audit it with `npx remarque-audit --palette <file> --src src`.)
 
 ### Palette from a terminal theme
 

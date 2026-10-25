@@ -8,8 +8,12 @@
  *   node_modules/remarque-tokens/REMARQUE.md    ("Token Tiers", "Font Slots")
  *   node_modules/remarque-tokens/AGENT_RULES.md ("Token Tiers")
  *
- * The block below is a full copy of the default palette tier, same
- * shape as node_modules/remarque-tokens/tokens-palette.css. Uncomment
+ * The block below is a full copy of the default palette tier (comments
+ * stripped), same shape as node_modules/remarque-tokens/tokens-palette.css:
+ * one light-dark(<light>, <dark>) pair per color. It must stay COMPLETE
+ * (syntax, state and viz slots included) because the audit rejects a
+ * palette file with any token missing. After a remarque-tokens bump,
+ * re-diff it against the package file. Uncomment
  * it (delete the "/*" line that opens it and the "* /" line that closes
  * it — nothing in between) and edit values in place. Once uncommented,
  * THIS file is itself a valid --palette audit target:
@@ -33,9 +37,9 @@
  *
  * After editing, run the audit and fix every failure before shipping —
  * do not suppress it. Dark mode is NOT an inverted light mode — the
- * dark block below is tuned independently, not derived from the light
- * one. [data-theme="dark"] is canonical; :root.dark is a compatibility
- * bridge for class-keyed sites.
+ * second argument of each light-dark() is tuned independently, not
+ * derived from the first. [data-theme] sets color-scheme; :root.dark is
+ * a compatibility bridge for class-keyed sites.
  */
 
 /*
@@ -43,48 +47,85 @@
   --font-display: "Newsreader", Georgia, "Times New Roman", serif;
   --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", "Fira Code", monospace;
-  --content-reading: 46rem;
 
-  --color-bg:          oklch(0.975 0.005 80);
-  --color-bg-subtle:   oklch(0.955 0.005 80);
-  --color-fg:          oklch(0.18 0.01 80);
-  --color-fg-muted:    oklch(0.43 0.015 80);
-  --color-muted:       oklch(0.54 0.01 80);
-  --color-border:      oklch(0.88 0.005 80);
-  --color-border-bold: oklch(0.62 0.01 80);
-  --color-surface:     oklch(0.965 0.005 80);
+  --content-reading: 38rem;
 
-  --color-accent:        oklch(0.50 0.14 250);
-  --color-accent-hover:  oklch(0.42 0.11 250);
-  --color-accent-subtle: oklch(0.95 0.02 250);
+  --weight-display: 400;
+}
 
-  --color-link: var(--color-accent);
-  --color-link-hover: var(--color-accent-hover);
-  --color-focus-ring: var(--color-accent);
-  --color-selection-bg: oklch(0.92 0.04 250);
-  --color-selection-fg: var(--color-fg);
-  --color-code-bg: oklch(0.945 0.005 80);
-  --color-code-fg: var(--color-fg);
+:root {
+  color-scheme: light dark;
+
+  --color-bg:          light-dark(oklch(0.975 0.005 80), oklch(0.16 0.01 80));
+  --color-bg-subtle:   light-dark(oklch(0.955 0.005 80), oklch(0.19 0.01 80));
+  --color-fg:          light-dark(oklch(0.18 0.01 80), oklch(0.90 0.005 80));
+  --color-fg-muted:    light-dark(oklch(0.43 0.015 80), oklch(0.70 0.01 80));
+  --color-muted:       light-dark(oklch(0.54 0.01 80), oklch(0.60 0.01 80));
+  --color-border:      light-dark(oklch(0.88 0.005 80), oklch(0.25 0.005 80));
+  --color-border-bold: light-dark(oklch(0.62 0.01 80), oklch(0.50 0.01 80));
+  --color-surface:     light-dark(oklch(0.965 0.005 80), oklch(0.19 0.01 80));
+
+  --color-accent:       light-dark(oklch(0.50 0.14 250), oklch(0.68 0.12 250));
+  --color-accent-hover: light-dark(oklch(0.42 0.11 250), oklch(0.75 0.12 250));
+  --color-accent-subtle: light-dark(oklch(0.95 0.02 250), oklch(0.22 0.04 250));
+
+  --color-link:        var(--color-accent);
+  --color-link-hover:  var(--color-accent-hover);
+  --color-focus-ring:  var(--color-accent);
+  --color-selection-bg: light-dark(oklch(0.92 0.04 250), oklch(0.30 0.06 250));
+  --color-selection-fg: light-dark(var(--color-fg), oklch(0.92 0.005 80));
+  --color-code-bg:     light-dark(oklch(0.945 0.005 80), oklch(0.20 0.005 80));
+  --color-code-fg:     light-dark(var(--color-fg), oklch(0.88 0.005 80));
+
+  --color-syntax-keyword:     light-dark(oklch(0.51 0.12 250), oklch(0.61 0.11 250));
+  --color-syntax-string:      light-dark(oklch(0.50 0.12 145), oklch(0.60 0.11 145));
+  --color-syntax-constant:    light-dark(oklch(0.51 0.105 85), oklch(0.61 0.11 84));
+  --color-syntax-comment:     light-dark(oklch(0.52 0.01 80), oklch(0.60 0.005 80));
+  --color-syntax-function:    light-dark(oklch(0.52 0.12 310), oklch(0.62 0.11 310));
+  --color-syntax-type:        light-dark(oklch(0.50 0.085 196), oklch(0.60 0.10 195));
+  --color-syntax-punctuation: light-dark(oklch(0.52 0.01 80), oklch(0.60 0.005 80));
+  --color-syntax-variable:    light-dark(oklch(0.26 0.01 80), oklch(0.82 0.005 80));
+  --color-syntax-link:        var(--color-accent);
+
+  --color-error:          light-dark(oklch(0.52 0.12  25), oklch(0.62 0.11 26));
+  --color-error-subtle:   light-dark(oklch(0.95 0.02  25), oklch(0.22 0.04 25));
+  --color-success:        light-dark(oklch(0.51 0.12  145), oklch(0.61 0.11 145));
+  --color-success-subtle: light-dark(oklch(0.95 0.02  145), oklch(0.22 0.04 145));
+  --color-warning:        light-dark(oklch(0.52 0.105 85), oklch(0.62 0.11 85));
+  --color-warning-subtle: light-dark(oklch(0.95 0.02  85), oklch(0.22 0.04 85));
+  --color-disabled:       var(--color-muted);
+
+  --color-viz-1: light-dark(oklch(0.538 0.121 250.5), oklch(0.708 0.129 249.5));
+  --color-viz-2: light-dark(oklch(0.541 0.111 85.5), oklch(0.712 0.13  85.3));
+  --color-viz-3: light-dark(oklch(0.524 0.12  24.6), oklch(0.724 0.129 310.2));
+  --color-viz-4: light-dark(oklch(0.499 0.12  144.8), oklch(0.725 0.129 25.4));
+  --color-viz-5: light-dark(oklch(0.524 0.121 309.6), oklch(0.696 0.129 144.9));
+  --color-viz-6: light-dark(oklch(0.528 0.09  195.8), oklch(0.697 0.119 194.8));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --weight-display: 500;
+  }
 }
 
 [data-theme="dark"],
 :root.dark {
-  --color-bg:          oklch(0.16 0.01 80);
-  --color-bg-subtle:   oklch(0.19 0.01 80);
-  --color-fg:          oklch(0.90 0.005 80);
-  --color-fg-muted:    oklch(0.70 0.01 80);
-  --color-muted:       oklch(0.60 0.01 80);
-  --color-border:      oklch(0.25 0.005 80);
-  --color-border-bold: oklch(0.50 0.01 80);
-  --color-surface:     oklch(0.19 0.01 80);
+  color-scheme: dark;
+  --weight-display: 500;
 
-  --color-accent:        oklch(0.68 0.12 250);
-  --color-accent-hover:  oklch(0.75 0.12 250);
-  --color-accent-subtle: oklch(0.22 0.04 250);
+  --color-syntax-link: var(--color-accent);
+  --color-disabled: var(--color-muted);
+}
 
-  --color-selection-bg: oklch(0.30 0.06 250);
-  --color-selection-fg: oklch(0.92 0.005 80);
-  --color-code-bg:     oklch(0.20 0.005 80);
-  --color-code-fg:     oklch(0.88 0.005 80);
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-border-bold: light-dark(oklch(0.55 0.01 80), oklch(0.58 0.01 80));
+    --color-fg-muted:     light-dark(oklch(0.36 0.015 80), oklch(0.78 0.01 80));
+  }
 }
 */

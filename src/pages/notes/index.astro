@@ -13,18 +13,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout title="Notes" description="Short observations and references.">
   <div class="pt-[var(--space-9)] content-reading">
     <h1 class="text-display font-display text-[var(--color-fg)]">Notes</h1>
-    <p class="mt-4 font-mono text-[var(--text-meta)] tracking-[var(--tracking-meta)] text-[var(--color-muted)]">
+    <p class="mt-4 font-mono text-[length:var(--text-meta)] tracking-[var(--tracking-meta)] text-[var(--color-muted)]">
       Short observations, bookmarks, and references.
     </p>
   </div>
 
   <div class="mt-12 content-reading space-y-0">
     <article class="py-6 border-b border-[var(--color-border)]">
-      <div class="font-mono text-[var(--text-meta)] tracking-[var(--tracking-meta)] text-[var(--color-muted)] mb-2">
+      <div class="font-mono text-[length:var(--text-meta)] tracking-[var(--tracking-meta)] text-[var(--color-muted)] mb-2">
         <time datetime="2026-07-20">Jul 20, 2026</time>
         <span class="ml-3">meta</span>
       </div>
-      <p class="text-[var(--text-body)] text-[var(--color-fg)]">
+      <p class="text-[length:var(--text-body)] text-[var(--color-fg)]">
         This is the Notebook archetype: compact entries, a mono timestamp and
         tag, minimal chrome. Replace this entry with your first real note, or
         delete it and start adding your own <code class="font-mono text-[0.9em] bg-[var(--color-code-bg)] text-[var(--color-code-fg)] px-[0.35em] py-[0.15em] rounded-[var(--radius-sm)]">&lt;article&gt;</code> blocks above the fold.
