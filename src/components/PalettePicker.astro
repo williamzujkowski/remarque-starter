@@ -1,0 +1,57 @@
+---
+/**
+ * Palette picker: lets a reader switch the whole site to one of the 15
+ * curated terminal themes in remarque-tokens' Palette Deck (0.31+). The
+ * site's own palette stays the default (the empty-value radio).
+ *
+ * THE DECK IS OPTIONAL. To remove it entirely:
+ *   1. delete this file and its <PalettePicker /> use in BaseLayout.astro;
+ *   2. delete the "Palette Deck restore" <script> in BaseLayout.astro's <head>;
+ *   3. delete the "remarque-tokens/deck.css" and "chrome.css" @imports in
+ *      src/styles/globals.css (keep chrome.css if you keep the skip link).
+ *
+ * Options come from the package's deck.json manifest; each swatch is
+ * colored by deck.css via [data-palette-swatch]. Markup contract:
+ * REMARQUE.md "Palette Deck", registry item "deck-picker".
+ */
+import manifest from 'remarque-tokens/deck.json';
+
+const palettes: { name: string; label: string }[] = manifest.palettes;
+---
+
+<details class="remarque-deck-picker" id="palette-picker">
+  <summary>Theme: <span data-deck-current>Remarque</span></summary>
+  <fieldset>
+    <legend class="remarque-sr-only">Color theme</legend>
+    <label class="remarque-deck-option">
+      <input type="radio" name="remarque-palette" value="" checked />
+      <span class="remarque-deck-swatches" data-palette-swatch="default" aria-hidden="true"><span></span><span></span><span></span></span>
+      Remarque
+    </label>
+    {palettes.map((p) => (
+      <label class="remarque-deck-option">
+        <input type="radio" name="remarque-palette" value={p.name} />
+        <span class="remarque-deck-swatches" data-palette-swatch={p.name} aria-hidden="true"><span></span><span></span><span></span></span>
+        {p.label}
+      </label>
+    ))}
+  </fieldset>
+</details>
+
+<script>
+  import { createDeck, bindPicker } from 'remarque-tokens/deck';
+
+  const picker = document.getElementById('palette-picker')!;
+  const current = picker.querySelector('[data-deck-current]')!;
+  // Registered names = every radio except the site default (value="").
+  const radios = [...picker.querySelectorAll<HTMLInputElement>('input[type="radio"]')];
+  const deck = createDeck(radios.map((r) => r.value).filter(Boolean));
+
+  deck.restore();
+  bindPicker(deck, picker, {
+    // Keep the <summary> label in step with the checked option.
+    onChange: () => {
+      current.textContent = radios.find((r) => r.checked)?.parentElement?.textContent?.trim() ?? 'Remarque';
+    },
+  });
+</script>
